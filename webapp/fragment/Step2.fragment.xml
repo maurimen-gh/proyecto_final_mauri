@@ -1,0 +1,77 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+
+     <MessageStrip
+        text="{i18n>informationMessageStep2}"
+        type="Information"
+        showIcon="true"
+        class="sapUiMediumMarginBottom">
+    </MessageStrip>
+
+    <VBox class="sapUiSmallMargin">
+
+        <form:SimpleForm id="simpleFormStep2"
+        editable="true"
+        layout="ResponsiveGridLayout"
+        labelSpanXL="3"
+        labelSpanL="3"
+        labelSpanM="3"
+        labelSpanS="12"
+        adjustLabelSpan="false"
+        columnsXL="1"
+        columnsL="1"
+        columnsM="1"
+        singleContainerFullSize="false" >
+
+            <form:content>
+            
+                <Label text="{i18n>name}"
+                        required="true"/>
+                <Input id="name" 
+                       value="{form>/Name}"
+                       valueState="{form>/NameValueState}"
+                       liveChange="onValidateStep2"/>
+
+                <Label text="{i18n>lastName}"
+                        required="true"/>
+                <Input id="lastName"
+                       value="{form>/LastName}"
+                       valueState="{form>/LastNameValueState}"
+                       liveChange="onValidateStep2" />
+
+                <Label text="{=
+                            ${form>/Type} !== '1' ? 'DNI' : 'CIF'
+                            }"
+                        required="true"/>
+                <Input id="dni"
+                        value="{form>/Dni}"
+                        valueState="{form>/DniValueState}"
+                        liveChange="onValidateStep2"/>
+
+                <Label text="{=
+                        ${form>/Type} !== '1' ? 'Salario bruto anual' : 'Precio diario'
+                        }"/>
+                <Slider enableTickmarks="true"
+                        min="{form>/SliderMin}"
+                        max="{form>/SliderMax}"
+                        value="{form>/SliderValue}"
+                        width="100%"
+                        showAdvancedTooltip="true"
+                        class="sapUiMediumMarginBottom customSlider"/> 
+
+                <Label text="{i18n>joiningDate}"
+                       required="true"/>
+                <DatePicker id="date"
+                            placeholder="{i18n>datePlaceHolder}"
+                            dateValue="{form>/Date}"
+                            valueState="{form>/DateValueState}"
+                            change="onValidateStep2"/>
+            </form:content>
+
+        </form:SimpleForm>  
+
+    </VBox>
+
+</core:FragmentDefinition>

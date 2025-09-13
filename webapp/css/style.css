@@ -1,0 +1,12 @@
+/* Enter your custom styles here */
+.subheader {
+    font-weight: bold;
+    font-size: medium;
+}
+
+.customSlider .sapMSliderLabel {
+    max-width: none !important;
+    white-space: nowrap;
+    overflow: visible;
+    font-size: 0.68rem; 
+}

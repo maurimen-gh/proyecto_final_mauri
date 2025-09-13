@@ -1,0 +1,43 @@
+<mvc:View xmlns:filterbar="sap.ui.comp.filterbar" controllerName="com.logali.final.controller.ViewEmployees"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:filter="sap.ui.comp.filterbar"
+    xmlns:f="sap.f"
+    xmlns="sap.m">
+
+    <f:DynamicPage id="viewEmployees">
+
+        <f:content>
+            
+            <Table id="employeesTable"
+                    items="{form>/}">
+                
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <OverflowToolbarButton icon="sap-icon://nav-back" 
+                                            press="onNavBack"/>
+                        <SearchField search="onSearch"
+                                    width="auto" />
+                    </OverflowToolbar>
+                </headerToolbar>
+
+                <columns>
+                    <Column/>
+                </columns>
+
+                <items>
+                    <ColumnListItem type="Navigation"
+                                    press="onNavToDetails">
+                        <cells>
+                            <ObjectIdentifier title="{form>FirstName} {form>LastName}" 
+                                            text="{form>Dni}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+
+            </Table>
+        
+        </f:content>
+
+    </f:DynamicPage>
+
+</mvc:View>

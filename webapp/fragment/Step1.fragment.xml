@@ -1,0 +1,27 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <MessageStrip
+        text="{i18n>informationMessageStep1}"
+        type="Information"
+        showIcon="true"
+        class="sapUiMediumMarginBottom">
+    </MessageStrip>
+
+    <HBox justifyContent="Center"
+          wrap="Wrap">
+
+        <Button id="type0" 
+                text="{i18n>internal}" 
+                press="onGoToStep2"/>
+        <Button id="type1" 
+                text="{i18n>selfEmployed}" 
+                class="sapUiTinyMarginBeginEnd"
+                press="onGoToStep2"/>
+        <Button id="type2" 
+                text="{i18n>manager}" 
+                press="onGoToStep2"/>
+    </HBox>
+
+</core:FragmentDefinition>

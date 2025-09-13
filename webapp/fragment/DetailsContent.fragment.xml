@@ -1,0 +1,46 @@
+<core:FragmentDefinition xmlns:simple="sap.gantt.simple"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:upload="sap.m.upload"
+    xmlns:commons="sap.suite.ui.commons">
+
+    <IconTabBar>
+        <items>
+            <IconTabFilter  id="attachmentTab"
+                            icon="sap-icon://attachment"
+                            text="{i18n>files}"
+                            design="Horizontal">
+                <content>
+                    <VBox> 
+                        <upload:UploadSet id="uploadsetview"
+                                        uploadUrl="/comlogalifinal/sap/opu/odata/sap/ZEMPLOYEES_SRV/Attachments"
+                                        beforeUploadStarts="onBeforeUpload"
+                                        uploadCompleted="onUploadCompleted"
+                                        afterItemRemoved="onAfterItemDelete">
+                            <upload:toolbar>
+                                <OverflowToolbar>
+                                    <Title  id="headerText"
+                                            width="87%"/>
+                                </OverflowToolbar>
+                            </upload:toolbar>
+                        </upload:UploadSet>
+                    </VBox>
+                </content>
+            </IconTabFilter>
+
+            <IconTabFilter id="recordTab"
+                           icon="sap-icon://money-bills"
+                           text="{i18n>record}"
+                           design="Horizontal">
+                <content>
+                    <commons:Timeline id="timeline"
+                                      alignment="Left"
+                                      lazyLoading="true"
+                                      showHeaderBar="false">
+                    </commons:Timeline>
+                </content>
+            </IconTabFilter>
+        </items>
+    </IconTabBar>
+
+</core:FragmentDefinition>

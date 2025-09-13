@@ -1,0 +1,115 @@
+<mvc:View controllerName="com.logali.final.controller.Details"
+    xmlns="sap.m"
+    xmlns:uxap="sap.uxap"
+    xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:layout="sap.ui.layout">
+
+    <NavContainer id="detailsNavContainer">
+
+        <Page id="entrancePage"
+               showHeader="false">
+
+            <VBox height="100%"
+                  alignItems="Center"
+                  justifyContent="Center">
+
+                  <Text text="{i18n>selectEmployee}"/>
+            
+            </VBox>
+        
+        </Page>
+
+        <Page id="detailsPage"
+              showHeader="false">
+
+            <uxap:ObjectPageLayout  showTitleInHeaderContent="true">
+
+                <uxap:headerTitle>
+                    <uxap:ObjectPageHeader  id="pageHeader"
+                                            objectImageURI= "{=
+                                                ${employeeDetailsForm>Type} === '0'? 'sap-icon://employee-pane':
+                                                ${employeeDetailsForm>Type} === '1'? 'sap-icon://employee' :
+                                                ${employeeDetailsForm>Type} === '2'? 'sap-icon://account' : ''
+                                                }"
+                                            objectTitle="{employeeDetailsForm>FirstName} {employeeDetailsForm>LastName}"
+                                            objectImageShape="Circle"
+                                            objectImageAlt="{employeeDetailsForm>FirstName} {employeeDetailsForm>LastName}"
+                                            objectSubtitle="{employeeDetailsForm>Dni}"
+                                            visible="false">
+                    </uxap:ObjectPageHeader>
+                </uxap:headerTitle>
+
+                <uxap:headerContent>
+                    <VBox>
+                        <HBox justifyContent="SpaceBetween" 
+                              class="sapUiSmallMarginTop"
+                              width="39rem"
+                              wrap="Wrap">
+                            <HBox>
+                                <Label text="{i18n>joiningDate}: "/>
+                                <Label text="{
+                                        path: 'employeeDetailsForm>CreationDate',
+                                        type: 'sap.ui.model.type.Date',
+                                        formatOptions: {
+                                        pattern: 'dd MMM. yyyy'
+                                            }
+                                        }" 
+                                />
+                            </HBox>
+                            
+                            <HBox >
+                                <Label text="{i18n>comment}: "/>
+                                <Label text="{employeeDetailsForm>Comments}"/>
+                            </HBox>
+                        </HBox>
+
+                        <HBox >
+                            <Label text="{i18n>type}: "/>
+                            <Label core:require="{
+                                        Formatter: 'com/logali/final/model/formatter'
+                                        }"
+                                    text="{
+                                    path:'employeeDetailsForm>Type',
+                                    formatter: 'Formatter.employeeTypeText.bind($controller)'
+                                    }"
+                                />
+                        </HBox>
+                    </VBox>       
+		        </uxap:headerContent>
+
+                <uxap:sections>
+                    
+                    <uxap:ObjectPageSection showTitle="false">
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection>
+                                <uxap:blocks>
+                                    <core:Fragment fragmentName="com.logali.final.fragment.DetailsContent"
+                                                   type="XML"/>
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+                
+                </uxap:sections>
+            
+            </uxap:ObjectPageLayout>
+
+            <footer>
+                <Bar>
+                    <contentRight>
+                        <Button text="{i18n>terminateEmployeeButton}" 
+                                press="onDeleteEmployee"
+                                type="Reject"/>
+                        <Button text="{i18n>promoteEmployeeButton}" 
+                                press="onOpenPromotionDialog"
+                                type="Accept"/>
+                    </contentRight>
+                </Bar>
+            </footer>
+        
+        </Page>
+
+    </NavContainer>
+
+</mvc:View>
